@@ -1,0 +1,41 @@
+
+EDICT_R
+-------
+
+The EDICT_R file consists of the 
+entries from the  V97-002 edition of 
+the EDICT file. These entries have had 
+all fields containing kanji removed, 
+and all the readings have been 
+converted to Hepburn romaji. Note that 
+the romaji is in fact "wa-puro-" 
+romaji, i.e. it differs slightly from 
+the usual Hepburn form as follows: 
+
+- long vowels in gairaigo are 
+  represented with a "-". 
+
+- long vowels in Japanese words are 
+  written with the usual Japanese 
+  vowel, which is usually a "u", and 
+  sometimes "o" or "i". Thus Tokyo 
+  appears as Toukyou, Kyoto as Kyouto, 
+  Osaka as Oosaka, etc. (Normal 
+  Hepburn either doubles the vowel, or 
+  uses a macron over the vowel.) 
+
+- the voiced "tsu" syllable is written 
+  "dzu", not "zu". Similarly the 
+  voiced "chi" is written "dji". This 
+  is to distinguish them from the 
+  voiced "su" and "shi" syllables, 
+  which are written as "zu" and "ji". 
+
+Other romanized files may be made
+available later.
+
+Jim Breen
+jwb@dgs.monash.edu.au
+20 April 1997.
+9 May 1997
+

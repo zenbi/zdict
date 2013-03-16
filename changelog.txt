@@ -1,0 +1,50 @@
+== 0.1.0 ==
+
+2001-08-28 Bryan Beicker <tokiko@tokiko.net>
+
+	* initial gtk+ version
+
+== 0.2.0 ==
+
+2002-09-01 Bryan Beicker <tokiko@tokiko.net>
+
+	* upgraded to gtk2
+
+2003-01-23 Bryan Beicker <tokiko@tokiko.net>
+
+	* converted GtkCList to GtkTreeView
+
+== 0.3.0 ==
+
+2004-10-27 Bryan Beicker <tokiko@tokiko.net>
+
+	* added search
+	* added about box
+	* code cleanup :)
+
+== 0.3.1 ==
+
+2005-02-21 Bryan Beicker <tokiko@tokiko.net>
+
+	* renamed main_w.c to zdict.w.c
+	* renamed main_z.c to zdict.z.c
+	* renamed eng.h to en.h
+	* renamed jap.h to ja.h
+	* removed about_w.c and about_z.c
+	* added about.c
+	* moved gtk callbacks into zdict.w.c
+	* set focus to the search box after a combo change
+	* added a "configure" script to set installation prefix
+	* added a "make install" to the Makefile
+
+== 0.3.2 ==
+
+2005-03-24 Bryan Beicker <tokiko@tokiko.net>
+
+	* removed configure script; i guess i didn't like it after all :)
+	* added webpage location to readme.txt
+	
+2005-06-01 Bryan Beicker <tokiko@tokiko.net>
+
+	* changed icon eventbox into a button
+	* changed icon picture
