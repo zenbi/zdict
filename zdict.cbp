@@ -29,13 +29,32 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="`pkg-config gtk+-2.0 --cflags`" />
 			<Add option="-Wall" />
+			<Add option="`pkg-config gtk+-3.0 --cflags`" />
 		</Compiler>
 		<Linker>
-			<Add option="`pkg-config gtk+-2.0 --libs`" />
+			<Add option="`pkg-config gtk+-3.0 --libs`" />
 		</Linker>
+		<Unit filename="Makefile" />
+		<Unit filename="about.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="changelog.txt" />
+		<Unit filename="edict.txt" />
+		<Unit filename="edict_license.txt" />
+		<Unit filename="edict_r.txt" />
+		<Unit filename="en.h" />
+		<Unit filename="ja.h" />
+		<Unit filename="license.txt" />
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.h" />
+		<Unit filename="readme.txt" />
+		<Unit filename="zdict.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="zdict_gui.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
