@@ -1,9 +1,9 @@
 //
 // zdict - simple dictionary viewer
-// Copyright (C) 2004-2005 Bryan Beicker <tokiko@tokiko.net>
+// Copyright (C) 2004-2013 Bryan Beicker <bryan@beicker.com>
 //
 // This file is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License (Version 2)
+// it under the terms of the GNU General Public License (Version 3)
 // as published by the Free Software Foundation.
 //
 // This file is distributed in the hope that it will be useful,
@@ -28,10 +28,10 @@ int main(int argc, char * argv[])
 			return 0;
 		}
 	}
-	
+
 	gtk_init(&argc, &argv);
 	zdict_create();
 	gtk_main();
-	
+
 	return 0;
 }

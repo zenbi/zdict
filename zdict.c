@@ -1,9 +1,9 @@
 //
 // zdict - simple dictionary viewer
-// Copyright (C) 2004-2005 Bryan Beicker <tokiko@tokiko.net>
+// Copyright (C) 2004-2013 Bryan Beicker <bryan@beicker.com>
 //
 // This file is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License (Version 2)
+// it under the terms of the GNU General Public License (Version 3)
 // as published by the Free Software Foundation.
 //
 // This file is distributed in the hope that it will be useful,
@@ -23,9 +23,9 @@
 void zdict_load()
 {
 	gtk_range_set_increments(GTK_RANGE(scroll), 1, 1024);
-	
-	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), "English to Japanese");
-	gtk_combo_box_append_text(GTK_COMBO_BOX(combo), "Japanese to English");
+
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(combo), NULL, "English to Japanese");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(combo), NULL, "Japanese to English");
 	gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 0);
 }
 
@@ -63,19 +63,19 @@ void about_button_click()
 //
 void combo_change(int lang)
 {
-	GtkAdjustment * a;
+	GtkAdjustment *a;
 
 	if (lang == 0) {
 		gtk_range_set_range(GTK_RANGE(scroll), 0, EN_NUM - 10);
 	} else {
 		gtk_range_set_range(GTK_RANGE(scroll), 0, JA_NUM - 10);
 	}
-	
+
 	gtk_range_set_value(GTK_RANGE(scroll), 0);
 	a = gtk_range_get_adjustment(GTK_RANGE(scroll));
 	gtk_adjustment_value_changed(a);
 	gtk_adjustment_changed(a);
-	
+
 	gtk_entry_set_text(GTK_ENTRY(search), "");
 	gtk_widget_grab_focus(search);
 }
@@ -88,9 +88,9 @@ void scroll_value_change(int v)
 {
 	int lang;
 	int i;
-	
+
 	lang = gtk_combo_box_get_active(GTK_COMBO_BOX(combo));
-	
+
 	if (lang == 0) {
 		for (i = 0; i < 10; i++) {
 			gtk_entry_set_text(GTK_ENTRY(name[i]), en[i + v][0]);
@@ -109,11 +109,11 @@ void scroll_value_change(int v)
 //
 // search for a string
 //
-void search_change(char * text)
+void search_change(char *text)
 {
 	int lang;
 	int i;
-	
+
 	if (strlen(text) == 0) {
 		return;
 	}
@@ -141,5 +141,5 @@ void search_change(char * text)
 				return;
 			}
 		}
-	}	
+	}
 }

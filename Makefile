@@ -1,9 +1,9 @@
 #
 # zdict - simple dictionary viewer
-# Copyright (C) 2004-2005 Bryan Beicker <tokiko@tokiko.net>
+# Copyright (C) 2004-2013 Bryan Beicker <bryan@beicker.com>
 #
 # This file is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License (Version 2)
+# it under the terms of the GNU General Public License (Version 3)
 # as published by the Free Software Foundation.
 #
 # This file is distributed in the hope that it will be useful,
@@ -12,13 +12,12 @@
 # GNU General Public License for more details.
 #
 
-PREFIX = /prog/zdict
-RUNDIR = /prog/zdict/run
+PREFIX = /usr/local
 
-GTK_CFLAGS = `pkg-config --cflags gtk+-2.0`
-GTK_LIBS = `pkg-config --libs gtk+-2.0`
-OBJECTS = main.o zdict.w.o zdict.z.o about.o
-
+GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
+GTK_LIBS = `pkg-config --libs gtk+-3.0`
+OBJECTS = main.o zdict_gui.o zdict.o about.o
+VERSION = `awk '$$2 == "VERSION" { print $$3 }' main.h | sed s/\"//g`
 
 zdict: $(OBJECTS)
 	$(CC) -Wall $(OBJECTS) $(GLIBS) $(LDFLAGS) -o $@ $(LIBS) $(GTK_CFLAGS) $(GTK_LIBS)
@@ -28,10 +27,13 @@ zdict: $(OBJECTS)
 	$(CC) -Wall $(CFLAGS) -c $< $(GTK_CFLAGS)
 
 clean:
-	rm -f *.o zdict
+	rm -rf *.o zdict bin obj
 
 install: zdict
 	mkdir -p -m 755 $(PREFIX)
-	mkdir -p -m 755 $(RUNDIR)
-	cp zdict $(RUNDIR)
-	chmod 755 $(RUNDIR)/zdict
+	cp zdict $(PREFIX)/bin
+	chmod 755 $(PREFIX)/bin/zdict
+
+tarball:
+	@echo creating zdict-$(VERSION).tar.gz
+	@git archive --prefix=zdict-$(VERSION)/ -o zdict-$(VERSION).tar.gz HEAD

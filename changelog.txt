@@ -1,30 +1,26 @@
-== 0.1.0 ==
+== 0.4.0 ==
 
-2001-08-28 Bryan Beicker <tokiko@tokiko.net>
+2013-03-17 Bryan Beicker
 
-	* initial gtk+ version
+	* upgraded to gtk3
+	* renamed zdict.w.c to zdict_gui.c
+	* renamed zdict.z.c to zdict.c
 
-== 0.2.0 ==
+== 0.3.2 ==
 
-2002-09-01 Bryan Beicker <tokiko@tokiko.net>
+2005-06-01 Bryan Beicker
 
-	* upgraded to gtk2
+	* changed icon eventbox into a button
+	* changed icon picture
 
-2003-01-23 Bryan Beicker <tokiko@tokiko.net>
+2005-03-24 Bryan Beicker
 
-	* converted GtkCList to GtkTreeView
-
-== 0.3.0 ==
-
-2004-10-27 Bryan Beicker <tokiko@tokiko.net>
-
-	* added search
-	* added about box
-	* code cleanup :)
+	* removed configure script; i guess i didn't like it after all :)
+	* added webpage location to readme.txt
 
 == 0.3.1 ==
 
-2005-02-21 Bryan Beicker <tokiko@tokiko.net>
+2005-02-21 Bryan Beicker
 
 	* renamed main_w.c to zdict.w.c
 	* renamed main_z.c to zdict.z.c
@@ -37,14 +33,27 @@
 	* added a "configure" script to set installation prefix
 	* added a "make install" to the Makefile
 
-== 0.3.2 ==
+== 0.3.0 ==
 
-2005-03-24 Bryan Beicker <tokiko@tokiko.net>
+2004-10-27 Bryan Beicker
 
-	* removed configure script; i guess i didn't like it after all :)
-	* added webpage location to readme.txt
-	
-2005-06-01 Bryan Beicker <tokiko@tokiko.net>
+	* added search
+	* added about box
+	* code cleanup :)
 
-	* changed icon eventbox into a button
-	* changed icon picture
+== 0.2.0 ==
+
+2003-01-23 Bryan Beicker
+
+	* converted GtkCList to GtkTreeView
+
+2002-09-01 Bryan Beicker
+
+	* upgraded to gtk2
+
+== 0.1.0 ==
+
+2001-08-28 Bryan Beicker
+
+	* initial gtk+ version
+
