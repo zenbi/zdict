@@ -27,7 +27,7 @@ zdict: $(OBJECTS)
 	$(CC) -Wall $(CFLAGS) -c $< $(GTK_CFLAGS)
 
 clean:
-	rm -rf *.o zdict bin obj
+	rm -rf *.o zdict bin obj zdict*.tar.gz
 
 install: zdict
 	mkdir -p -m 755 $(PREFIX)
