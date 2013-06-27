@@ -1,9 +1,11 @@
 zdict
 -----
 
-zdict is a gtk dictionary viewer for the edict database.
+zdict is a simple lookup tool for English speakers learning Japanese.
+Unlike other Japanese dictionaries, zdict uses romanji to ease the
+translation process.
 
-"English to Japanese" and "Japanese to English" (romanji) are the only options.
+zdict uses the GTK+ toolkit (version 3)
 
 
 edict
@@ -37,6 +39,18 @@ Install
 
 To compile, you need the gtk3 development libs and a C compiler.
 
+For debian based distributions:
+
+apt-get install build-essential libgtk-3-dev libgdk-pixbuf2.0-dev pkg-config
+
+Then:
+
 1) make
 2) make install
+
+By default, the binary will install into /usr/local/bin.  To change the 
+destination, pass DESTDIR to make:
+
+make install DESTDIR=/usr
+
 

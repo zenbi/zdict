@@ -17,7 +17,6 @@
 #include "en.h"
 #include "ja.h"
 #include "main.h"
-#include "zdict.xpm"
 
 
 void zdict_load()
@@ -54,7 +53,7 @@ void zdict_destroy()
 //
 void about_button_click()
 {
-	about_dialog(zdict, zdict_xpm, "zdict " VERSION, "simple dictionary viewer", "Copyright (C) 2004-2005 Bryan Beicker");
+	about_dialog(zdict);
 }
 
 

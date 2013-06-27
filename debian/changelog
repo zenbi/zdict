@@ -1,0 +1,5 @@
+zdict (0.4.1-1) unstable; urgency=low
+
+  * Initial debian package
+
+ -- Bryan Beicker <bryan@beicker.com>  Tue, 11 Jun 2013 00:18:14 +0000

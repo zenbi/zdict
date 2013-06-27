@@ -14,19 +14,24 @@
 
 #include <gtk/gtk.h>		// gtk
 #include "main.h"
+#include "book_48.h"
 
 
-void about_dialog(GtkWidget * parent, char ** xpm, char * name, char * desc, char * copy)
+void about_dialog(GtkWidget *parent)
 {
-	GtkWidget * dialog;
+	GtkWidget *win_about;
+	GdkPixbuf *pix_icon;
 
-	dialog = gtk_about_dialog_new();
-	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), "zdict");
-	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), VERSION);
-	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), COPYRIGHT);
-	gtk_about_dialog_set_license_type(GTK_ABOUT_DIALOG(dialog), GTK_LICENSE_GPL_3_0);
-	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), WEBSITE);
-	gtk_about_dialog_set_website_label(GTK_ABOUT_DIALOG(dialog), WEBSITE);
-	gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy(dialog);
+	win_about = gtk_about_dialog_new();
+	pix_icon = gdk_pixbuf_new_from_inline(-1, book_48, FALSE, NULL);
+	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(win_about), "zdict");
+	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(win_about), VERSION);
+	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(win_about), COPYRIGHT);
+	gtk_about_dialog_set_license_type(GTK_ABOUT_DIALOG(win_about), GTK_LICENSE_GPL_3_0);
+	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(win_about), WEBSITE);
+	gtk_about_dialog_set_website_label(GTK_ABOUT_DIALOG(win_about), WEBSITE);
+	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(win_about), DESCRIPTION);
+	gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(win_about), pix_icon);
+	gtk_dialog_run(GTK_DIALOG(win_about));
+	gtk_widget_destroy(win_about);
 }

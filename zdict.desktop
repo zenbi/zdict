@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=zdict
+Comment=Japanese to English dictionary
+Exec=zdict
+Icon=zdict
+Terminal=false
+Type=Application
+Categories=Education;Dictionary;GTK;

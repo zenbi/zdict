@@ -27,6 +27,13 @@ int main(int argc, char * argv[])
 			g_print("zdict " VERSION "\n");
 			return 0;
 		}
+		if (strcmp(argv[1], "--help") == 0) {
+			g_print("zdict " VERSION "\n\n");
+			g_print("Options:\n\n");
+			g_print("        --help          display this help and exit\n");
+			g_print("        --version       output version information and exit\n\n");
+			return 0;
+		}
 	}
 
 	gtk_init(&argc, &argv);

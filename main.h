@@ -15,8 +15,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define VERSION                 "0.4.0"
+#define VERSION                 "0.4.1"
 #define COPYRIGHT		"Copyright (C) 2004-2013 Bryan Beicker"
+#define DESCRIPTION		"Japanese to English dictionary"
 #define WEBSITE			"http://zwin.org/zdict/"
 
 // zdict.w.c
@@ -32,7 +33,7 @@ void scroll_value_change(int);
 void search_change(char *);
 
 // about.c
-void about_dialog(GtkWidget *, char **, char *, char *, char *);
+void about_dialog(GtkWidget *);
 
 
 // globals

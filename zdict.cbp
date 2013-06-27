@@ -40,6 +40,15 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="changelog.txt" />
+		<Unit filename="debian/changelog" />
+		<Unit filename="debian/compat" />
+		<Unit filename="debian/control" />
+		<Unit filename="debian/copyright" />
+		<Unit filename="debian/docs" />
+		<Unit filename="debian/files" />
+		<Unit filename="debian/rules" />
+		<Unit filename="debian/watch" />
+		<Unit filename="debian/zdict.manpages" />
 		<Unit filename="edict.txt" />
 		<Unit filename="edict_license.txt" />
 		<Unit filename="edict_r.txt" />
@@ -51,9 +60,11 @@
 		</Unit>
 		<Unit filename="main.h" />
 		<Unit filename="readme.txt" />
+		<Unit filename="zdict.1" />
 		<Unit filename="zdict.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="zdict.desktop" />
 		<Unit filename="zdict_gui.c">
 			<Option compilerVar="CC" />
 		</Unit>

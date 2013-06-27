@@ -1,3 +1,13 @@
+== 0.4.1 ==
+
+2013-06-12 Bryan Beicker
+
+	* added debian package directory
+	* added manpage
+	* added .desktop file
+	* switched from gtk table to gtk grid
+	* switched from xpm icon to png icons
+
 == 0.4.0 ==
 
 2013-03-17 Bryan Beicker

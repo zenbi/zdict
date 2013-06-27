@@ -14,7 +14,8 @@
 
 #include <gtk/gtk.h>		// gtk
 #include "main.h"
-#include "zdict.xpm"
+#include "book_16.h"
+#include "book_48.h"
 
 
 gboolean zdict_delete_event_signal(GtkWidget *window, GdkEvent *event, gpointer data)
@@ -65,87 +66,94 @@ void zdict_create()
 	gtk_window_set_resizable(GTK_WINDOW(zdict), FALSE);
 	gtk_widget_set_size_request(zdict, 600, -1);
 
-	GdkPixbuf *pixbuf;
-	pixbuf = gdk_pixbuf_new_from_xpm_data((const char **) zdict_xpm);
-	gtk_window_set_icon(GTK_WINDOW(zdict), pixbuf);
+	GList *icons = NULL;
+	GdkPixbuf *icon_16;
+	GdkPixbuf *icon_48;
+	icon_16 = gdk_pixbuf_new_from_inline(-1, book_16, FALSE, NULL);
+	icon_48 = gdk_pixbuf_new_from_inline(-1, book_48, FALSE, NULL);
+	icons = g_list_append(icons, icon_16);
+	icons = g_list_append(icons, icon_48);
+	gtk_window_set_icon_list(GTK_WINDOW(zdict), icons);
 
-	GtkWidget *table;
-	table = gtk_table_new(14, 3, FALSE);
-	gtk_widget_show(table);
-	gtk_container_add(GTK_CONTAINER(zdict), table);
-	gtk_container_set_border_width(GTK_CONTAINER(table), 8);
-	gtk_table_set_row_spacings(GTK_TABLE(table), 4);
-	gtk_table_set_col_spacings(GTK_TABLE(table), 4);
+	GtkWidget *box;
+	box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 4);
+	gtk_widget_show(box);
+	gtk_container_set_border_width(GTK_CONTAINER(box), 8);
+	gtk_container_add(GTK_CONTAINER(zdict), box);
 
-	GtkWidget *table_top;
-	table_top = gtk_table_new(1, 2, FALSE);
-	gtk_widget_show(table_top);
-	gtk_table_attach(GTK_TABLE(table), table_top, 0, 3, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-	gtk_table_set_row_spacings(GTK_TABLE(table_top), 8);
-	gtk_table_set_col_spacings(GTK_TABLE(table_top), 8);
+	GtkWidget *box_top;
+	box_top = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 4);
+	gtk_widget_show(box_top);
+	gtk_box_pack_start(GTK_BOX(box), box_top, TRUE, TRUE, 0);
 
 	GtkWidget *about_button;
 	GdkPixbuf *about_pixbuf;
 	GtkWidget *about_icon;
 	about_button = gtk_button_new();
-	about_pixbuf = gdk_pixbuf_new_from_xpm_data((const char **) zdict_xpm);
+	about_pixbuf = gdk_pixbuf_new_from_inline(-1, book_16, FALSE, NULL);
 	about_icon = gtk_image_new_from_pixbuf(about_pixbuf);
 	gtk_button_set_relief(GTK_BUTTON(about_button), GTK_RELIEF_NONE);
 	g_object_unref(about_pixbuf);
 	gtk_widget_show(about_button);
 	gtk_widget_show(about_icon);
 	gtk_container_add(GTK_CONTAINER(about_button), about_icon);
-	gtk_table_attach(GTK_TABLE(table_top), about_button, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+	gtk_box_pack_start(GTK_BOX(box_top), about_button, FALSE, TRUE, 0);
 
 	combo = gtk_combo_box_text_new();
 	gtk_widget_show(combo);
-	gtk_table_attach(GTK_TABLE(table_top), combo, 1, 2, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+	gtk_box_pack_start(GTK_BOX(box_top), combo, TRUE, TRUE, 0);
 
 	GtkWidget *hr1;
-	//hr1 = gtk_hseparator_new ();
 	hr1 = gtk_separator_new(GTK_ORIENTATION_HORIZONTAL);
 	gtk_widget_show(hr1);
-	gtk_table_attach(GTK_TABLE(table), hr1, 0, 3, 1, 2, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 8);
+	gtk_box_pack_start(GTK_BOX(box), hr1, TRUE, TRUE, 4);
+
+	GtkWidget *grid;
+	grid = gtk_grid_new();
+	gtk_grid_set_row_spacing(GTK_GRID(grid), 4);
+	gtk_grid_set_column_spacing(GTK_GRID(grid), 4);
+	gtk_widget_show(grid);
+	gtk_box_pack_start(GTK_BOX(box), grid, TRUE, TRUE, 4);
 
 	for (i = 0; i < 10; i++) {
 		name[i] = gtk_entry_new();
 		gtk_widget_show(name[i]);
-		gtk_table_attach(GTK_TABLE(table), name[i], 0, 1, i + 2, i + 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+		gtk_widget_set_hexpand(name[i], TRUE);
+		gtk_grid_attach(GTK_GRID(grid), name[i], 0, i, 1, 1);
 		gtk_editable_set_editable(GTK_EDITABLE(name[i]), FALSE);
 		gtk_widget_set_can_focus(name[i], FALSE);
 
 		value[i] = gtk_entry_new();
 		gtk_widget_show(value[i]);
-		gtk_table_attach(GTK_TABLE(table), value[i], 2, 3, i + 2, i + 3, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+		gtk_widget_set_hexpand(value[i], TRUE);
+		gtk_grid_attach(GTK_GRID(grid), value[i], 2, i, 1, 1);
 		gtk_editable_set_editable(GTK_EDITABLE(value[i]), FALSE);
 		gtk_widget_set_can_focus(value[i], FALSE);
 	}
 
 	scroll = gtk_scrollbar_new(GTK_ORIENTATION_VERTICAL, NULL);
 	gtk_widget_show(scroll);
-	gtk_table_attach(GTK_TABLE(table), scroll, 1, 2, 2, 12, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+	gtk_grid_attach(GTK_GRID(grid), scroll, 1, 0, 1, 10);
 
 	GtkWidget *hr2;
 	hr2 = gtk_separator_new(GTK_ORIENTATION_HORIZONTAL);
 	gtk_widget_show(hr2);
-	gtk_table_attach(GTK_TABLE(table), hr2, 0, 3, 12, 13, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 8);
+	gtk_box_pack_start(GTK_BOX(box), hr2, TRUE, TRUE, 4);
 
-	GtkWidget *table_bot;
-	table_bot = gtk_table_new(1, 2, FALSE);
-	gtk_widget_show(table_bot);
-	gtk_table_attach(GTK_TABLE(table), table_bot, 0, 3, 13, 14, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
-	gtk_table_set_row_spacings(GTK_TABLE(table_bot), 8);
-	gtk_table_set_col_spacings(GTK_TABLE(table_bot), 8);
+	GtkWidget *box_bottom;
+	box_bottom = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 4);
+	gtk_widget_show(box_bottom);
+	gtk_box_pack_start(GTK_BOX(box), box_bottom, TRUE, TRUE, 0);
 
 	GtkWidget *search_label;
 	search_label = gtk_label_new("search");
 	gtk_widget_show(search_label);
-	gtk_table_attach(GTK_TABLE(table_bot), search_label, 0, 1, 0, 1, (GtkAttachOptions) (GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+	gtk_box_pack_start(GTK_BOX(box_bottom), search_label, FALSE, TRUE, 0);
 	gtk_misc_set_alignment(GTK_MISC(search_label), 0, 0.5);
 
 	search = gtk_entry_new();
 	gtk_widget_show(search);
-	gtk_table_attach(GTK_TABLE(table_bot), search, 1, 2, 0, 1, (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), (GtkAttachOptions) (0), 0, 0);
+	gtk_box_pack_start(GTK_BOX(box_bottom), search, TRUE, TRUE, 0);
 	gtk_widget_grab_focus(search);
 
 	g_signal_connect((gpointer) zdict, "delete_event", G_CALLBACK(zdict_delete_event_signal), NULL);

@@ -1,0 +1,15 @@
+Source: zdict
+Section: education
+Priority: extra
+Maintainer: Bryan Beicker <bryan@beicker.com>
+Build-Depends: debhelper (>= 8.0.0), libgtk-3-dev, libgdk-pixbuf2.0-dev, pkg-config
+Standards-Version: 3.9.3
+Homepage: http://zwin.org/zdict/
+
+Package: zdict
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Japanese to English dictionary
+ zdict is a simple lookup tool for English speakers learning Japanese. 
+ Unlike other Japanese dictionaries, zdict uses romanji to ease the 
+ translation process.
