@@ -1,5 +1,9 @@
 == 0.4.1 ==
 
+2013-06-27 Bryan Beicker
+
+	* package directory cleanup for ubuntu ppa
+
 2013-06-12 Bryan Beicker
 
 	* added debian package directory
