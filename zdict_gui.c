@@ -1,21 +1,23 @@
 //
 // zdict - simple dictionary viewer
-// Copyright (C) 2004-2013 Bryan Beicker <bryan@beicker.com>
+// Copyright (C) 2004-2017 Bryan Beicker <bryan@beicker.com>
 //
-// This file is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License (Version 3)
-// as published by the Free Software Foundation.
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-// This file is distributed in the hope that it will be useful,
+// This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
-#include <gtk/gtk.h>		// gtk
+#include <gtk/gtk.h>
 #include "main.h"
-#include "book_16.h"
-#include "book_48.h"
 
 
 gboolean zdict_delete_event_signal(GtkWidget *window, GdkEvent *event, gpointer data)
@@ -69,8 +71,8 @@ void zdict_create()
 	GList *icons = NULL;
 	GdkPixbuf *icon_16;
 	GdkPixbuf *icon_48;
-	icon_16 = gdk_pixbuf_new_from_inline(-1, book_16, FALSE, NULL);
-	icon_48 = gdk_pixbuf_new_from_inline(-1, book_48, FALSE, NULL);
+	icon_16 = gdk_pixbuf_new_from_resource("/org/zwin/zdict/book-16.png", NULL);
+	icon_48 = gdk_pixbuf_new_from_resource("/org/zwin/zdict/book-48.png", NULL);
 	icons = g_list_append(icons, icon_16);
 	icons = g_list_append(icons, icon_48);
 	gtk_window_set_icon_list(GTK_WINDOW(zdict), icons);
@@ -87,16 +89,13 @@ void zdict_create()
 	gtk_box_pack_start(GTK_BOX(box), box_top, TRUE, TRUE, 0);
 
 	GtkWidget *about_button;
-	GdkPixbuf *about_pixbuf;
 	GtkWidget *about_icon;
 	about_button = gtk_button_new();
-	about_pixbuf = gdk_pixbuf_new_from_inline(-1, book_16, FALSE, NULL);
-	about_icon = gtk_image_new_from_pixbuf(about_pixbuf);
+	about_icon = gtk_image_new_from_icon_name("help-about", GTK_ICON_SIZE_BUTTON);
 	gtk_button_set_relief(GTK_BUTTON(about_button), GTK_RELIEF_NONE);
-	g_object_unref(about_pixbuf);
+	gtk_button_set_image(GTK_BUTTON(about_button), about_icon);
+	gtk_button_set_always_show_image(GTK_BUTTON(about_button), TRUE);
 	gtk_widget_show(about_button);
-	gtk_widget_show(about_icon);
-	gtk_container_add(GTK_CONTAINER(about_button), about_icon);
 	gtk_box_pack_start(GTK_BOX(box_top), about_button, FALSE, TRUE, 0);
 
 	combo = gtk_combo_box_text_new();
@@ -149,7 +148,6 @@ void zdict_create()
 	search_label = gtk_label_new("search");
 	gtk_widget_show(search_label);
 	gtk_box_pack_start(GTK_BOX(box_bottom), search_label, FALSE, TRUE, 0);
-	gtk_misc_set_alignment(GTK_MISC(search_label), 0, 0.5);
 
 	search = gtk_entry_new();
 	gtk_widget_show(search);

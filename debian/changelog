@@ -1,3 +1,9 @@
+zdict (0.4.2-1) unstable; urgency=low
+
+  * GTK+ deprecation fixes
+
+ -- bryan <bryan@beicker.com>  Fri, 28 Apr 2017 18:19:47 -0500
+
 zdict (0.4.1-1) unstable; urgency=low
 
   * Initial debian package

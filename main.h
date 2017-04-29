@@ -1,24 +1,28 @@
 //
 // zdict - simple dictionary viewer
-// Copyright (C) 2004-2013 Bryan Beicker <bryan@beicker.com>
+// Copyright (C) 2004-2017 Bryan Beicker <bryan@beicker.com>
 //
-// This file is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License (Version 3)
-// as published by the Free Software Foundation.
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-// This file is distributed in the hope that it will be useful,
+// This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
 #ifndef MAIN_H
 #define MAIN_H
 
-#define VERSION                 "0.4.1"
-#define COPYRIGHT		"Copyright (C) 2004-2013 Bryan Beicker"
+#define VERSION                 "0.4.2"
+#define COPYRIGHT		"Copyright (C) 2004-2017 Bryan Beicker"
 #define DESCRIPTION		"Japanese to English dictionary"
-#define WEBSITE			"http://zwin.org/zdict/"
+#define WEBSITE			"https://zwin.org/zdict/"
 
 // zdict.w.c
 void zdict_create();
@@ -37,12 +41,12 @@ void about_dialog(GtkWidget *);
 
 
 // globals
-GtkWidget * zdict;
-GtkWidget * combo;
-GtkWidget * name[10];
-GtkWidget * value[10];
-GtkWidget * scroll;
-GtkWidget * search;
-GtkWidget * version;
+GtkWidget *zdict;
+GtkWidget *combo;
+GtkWidget *name[10];
+GtkWidget *value[10];
+GtkWidget *scroll;
+GtkWidget *search;
+GtkWidget *version;
 
 #endif

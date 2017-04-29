@@ -1,18 +1,22 @@
 //
 // zdict - simple dictionary viewer
-// Copyright (C) 2004-2013 Bryan Beicker <bryan@beicker.com>
+// Copyright (C) 2004-2017 Bryan Beicker <bryan@beicker.com>
 //
-// This file is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License (Version 3)
-// as published by the Free Software Foundation.
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-// This file is distributed in the hope that it will be useful,
+// This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
-#include <gtk/gtk.h>		// gtk
+#include <gtk/gtk.h>
 #include <string.h>		// strlen(), strcmp()
 #include "en.h"
 #include "ja.h"
@@ -26,6 +30,7 @@ void zdict_load()
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(combo), NULL, "English to Japanese");
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(combo), NULL, "Japanese to English");
 	gtk_combo_box_set_active(GTK_COMBO_BOX(combo), 0);
+	scroll_value_change(0);
 }
 
 
@@ -62,8 +67,6 @@ void about_button_click()
 //
 void combo_change(int lang)
 {
-	GtkAdjustment *a;
-
 	if (lang == 0) {
 		gtk_range_set_range(GTK_RANGE(scroll), 0, EN_NUM - 10);
 	} else {
@@ -71,9 +74,6 @@ void combo_change(int lang)
 	}
 
 	gtk_range_set_value(GTK_RANGE(scroll), 0);
-	a = gtk_range_get_adjustment(GTK_RANGE(scroll));
-	gtk_adjustment_value_changed(a);
-	gtk_adjustment_changed(a);
 
 	gtk_entry_set_text(GTK_ENTRY(search), "");
 	gtk_widget_grab_focus(search);
@@ -125,7 +125,6 @@ void search_change(char *text)
 					i = EN_NUM - 10;
 				}
 				gtk_range_set_value(GTK_RANGE(scroll), i);
-				gtk_adjustment_value_changed(gtk_range_get_adjustment(GTK_RANGE(scroll)));
 				return;
 			}
 		}
@@ -136,7 +135,6 @@ void search_change(char *text)
 					i = JA_NUM - 10;
 				}
 				gtk_range_set_value(GTK_RANGE(scroll), i);
-				gtk_adjustment_value_changed(gtk_range_get_adjustment(GTK_RANGE(scroll)));
 				return;
 			}
 		}

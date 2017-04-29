@@ -37,7 +37,7 @@ Webpage
 Install
 -------
 
-To compile, you need the gtk3 development libs and a C compiler.
+To compile, you need the GTK+ 3 development libs and a C compiler.
 
 For debian based distributions:
 
@@ -48,9 +48,7 @@ Then:
 1) make
 2) make install
 
-By default, the binary will install into /usr/local/bin.  To change the 
-destination, pass DESTDIR to make:
+By default, the files will install into /usr.  To change the destination,
+pass PREFIX to make:
 
-make install DESTDIR=/usr
-
-
+make install PREFIX=/usr/local

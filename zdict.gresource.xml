@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+	<gresource prefix="/org/zwin/zdict">
+		<file>book-16.png</file>
+		<file>book-32.png</file>
+		<file>book-48.png</file>
+		<file>book-64.png</file>
+		<file>book-96.png</file>
+		<file>book-128.png</file>
+	</gresource>
+</gresources>

@@ -1,8 +1,12 @@
+== 0.4.2 ==
+
+2017-04-28 Bryan Beicker
+
+	* switched license to GPL3 or later
+	* fix deprecated gtk functions and warnings
+	* some HiDPI fixes
+
 == 0.4.1 ==
-
-2013-06-27 Bryan Beicker
-
-	* package directory cleanup for ubuntu ppa
 
 2013-06-12 Bryan Beicker
 
